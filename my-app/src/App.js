@@ -10,7 +10,7 @@ const App = () => {
   const [time, setTime] = useState(0);
   const [result, setResult] = useState(0);
 
-  const calculateBloodAlcoholLevel = () => {
+  const calculateAlcoholLevel = () => {
     const litres = beer * 0.33;
     const grams = litres * 8 * 4.5;
     const burning = weight / 10;
@@ -62,7 +62,7 @@ const App = () => {
           onChange={(e) => setTime(e.target.value)}
         />
       </div>
-      <button onClick={calculateBloodAlcoholLevel}>Calculate</button>
+      <button onClick={calculateAlcoholLevel}>Calculate</button>
       <div>
         <h2>Result:</h2>
         <p>{result}</p>
