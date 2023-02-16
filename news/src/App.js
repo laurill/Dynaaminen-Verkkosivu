@@ -1,5 +1,7 @@
 import './App.css';
 import {useState} from 'react';
+import {useEffect} from 'react';
+import {axios} from 'axios';
 
 const URL = 'https://newsapi.org/v2';
 const APIKEY = '6aa7b01ce18440bab3611137a6acd3cb';
@@ -9,9 +11,9 @@ function App() {
  const [isLoaded, setIsLoaded] = useState(false);
  const [items, setItems] = useState([]);
  const [selectedItem,setSelectedItem] = useState(null);
- 
-useEffect(() => {
-  const criteria = 'top-headlines?country=us&category=business'
+
+  useEffect(() => {
+  const criteria = 'top-headlines?country=us&category=business';
   const address = URL + '/' + criteria + '&apikey=' + APIKEY;
 
 axios.get(address)
@@ -23,6 +25,10 @@ axios.get(address)
     alert(error);
   });
 },[])
+
+function close() {
+  setSelectedItem(null);
+}
 
 if (error) {
   return <p>{error.message}</p>
